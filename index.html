@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aniversário da Mari</title>
+<meta name="description" content="Aniversário de 24 anos da Mari — 7 de novembro, 19h30, Benza Deus Gastrobar, Barreiro, Belo Horizonte. Confirme sua presença.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Italiana&family=Jost:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --wine: #7A1F35;
+    --wine-dark: #5A1A2B;
+    --rose: #C4566B;
+    --rose-soft: #E8B4A6;
+    --tan: #D9A77A;
+    --cream: #FBF4E8;
+    --paper: #FFFAF2;
+    --muted: #8A4A58;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Jost', system-ui, sans-serif;
+    color: var(--wine);
+    background-color: var(--cream);
+    background-image: repeating-conic-gradient(from -3.5deg at 50% 22%, rgba(122, 31, 53, 0.06) 0deg 7deg, transparent 7deg 30deg);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .arc { position: fixed; width: 300px; height: 300px; pointer-events: none; z-index: 0; }
+  .arc--tr { top: 0; right: 0; }
+  .arc--bl { bottom: 0; left: 0; }
+
+  main { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 72px 20px 96px; }
+
+  /* Convite */
+  .hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .eyebrow { margin: 0; font-size: 14px; letter-spacing: 0.42em; text-transform: uppercase; }
+  .title-small { margin: 0; font-family: 'Italiana', Georgia, serif; font-size: clamp(34px, 7vw, 52px); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; }
+  .name { margin: -14px 0 0; font-family: 'Yellowtail', 'Brush Script MT', cursive; font-weight: 400; font-size: clamp(120px, 30vw, 210px); line-height: 0.95; text-shadow: 6px 6px 0 var(--rose-soft); }
+
+  .badge { width: 136px; height: 136px; border-radius: 50%; border: 3px solid var(--wine); padding: 7px; }
+  .badge > div { width: 100%; height: 100%; border-radius: 50%; border: 2px dashed var(--wine); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .badge strong { font-family: 'Yellowtail', cursive; font-weight: 400; font-size: 60px; line-height: 0.9; }
+  .badge span { font-size: 13px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; }
+
+  .rule { width: 80px; height: 3px; background: var(--wine); border: 0; margin: 8px 0; }
+  .script { margin: 0; font-family: 'Yellowtail', cursive; font-size: clamp(40px, 9vw, 52px); line-height: 1; }
+  .date { margin: -6px 0 0; font-size: 20px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .venue { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wine-dark); }
+  .address { margin: -8px 0 0; max-width: 460px; font-size: 15px; letter-spacing: 0.1em; line-height: 1.6; text-transform: uppercase; }
+  .maps { font-size: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wine); text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
+  .maps:hover { color: var(--rose); }
+
+  .countdown { display: flex; gap: 12px; margin-top: 16px; }
+  .countdown div { min-width: 76px; padding: 12px 8px; border: 2px solid var(--wine); border-radius: 14px; background: var(--paper); }
+  .countdown b { display: block; font-family: 'Italiana', serif; font-weight: 400; font-size: 34px; line-height: 1; }
+  .countdown small { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* Cartões */
+  .card { margin-top: 64px; background: var(--paper); border: 2px solid var(--wine); border-radius: 22px; padding: 36px 32px; box-shadow: 8px 8px 0 var(--rose-soft); }
+  .card h2 { margin: 0 0 4px; font-family: 'Yellowtail', cursive; font-weight: 400; font-size: 48px; line-height: 1.1; text-align: center; }
+  .card .sub { margin: 0 0 28px; text-align: center; color: var(--muted); font-size: 16px; }
+
+  form { display: grid; gap: 20px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  label.lbl { font-size: 13px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  input[type="text"], input[type="password"], select {
+    font: inherit; font-size: 17px; color: var(--wine-dark);
+    padding: 12px 16px; min-height: 48px; width: 100%;
+    border: 2px solid rgba(122, 31, 53, 0.35); border-radius: 12px; background: #fff;
+  }
+  input::placeholder { color: #B98A93; }
+  input:focus, select:focus { outline: none; border-color: var(--wine); box-shadow: 0 0 0 4px rgba(196, 86, 107, 0.2); }
+
+  .btn {
+    font: inherit; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    min-height: 52px; padding: 0 26px; border-radius: 999px; cursor: pointer;
+    border: 2px solid var(--wine); background: var(--wine); color: var(--cream);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--rose-soft); }
+  .btn:active { transform: none; box-shadow: none; }
+  .btn--ghost { background: transparent; color: var(--wine); }
+  .btn--sm { min-height: 44px; padding: 0 16px; font-size: 13px; }
+  .answer { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .error { margin: -6px 0 0; color: #A3122F; font-size: 15px; min-height: 1em; }
+  .toast { margin: 0; text-align: center; font-family: 'Yellowtail', cursive; font-size: 30px; color: var(--rose); min-height: 1em; }
+
+  footer { margin-top: 56px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  footer p { margin: 0; font-family: 'Yellowtail', cursive; font-size: 30px; }
+
+  /* Senha */
+  dialog { border: 2px solid var(--wine); border-radius: 22px; padding: 32px 28px; width: min(420px, calc(100% - 32px)); background: var(--paper); color: var(--wine); box-shadow: 8px 8px 0 var(--rose-soft); }
+  dialog::backdrop { background: rgba(58, 14, 26, 0.45); }
+  dialog h2 { margin: 0 0 6px; font-family: 'Yellowtail', cursive; font-weight: 400; font-size: 42px; text-align: center; }
+  dialog .sub { margin: 0 0 20px; text-align: center; color: var(--muted); }
+  .dialog-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* Painel do moderador */
+  .admin-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .admin-head h1 { margin: 0; font-family: 'Yellowtail', cursive; font-weight: 400; font-size: 56px; line-height: 1; }
+  .admin-head .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat { text-align: center; padding: 16px 8px; border-radius: 14px; background: var(--cream); }
+  .stat b { display: block; font-weight: 500; font-size: 40px; line-height: 1.1; }
+  .stat small { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+  .add { display: grid; grid-template-columns: 1fr 170px auto; gap: 10px; margin-bottom: 20px; }
+  .tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tools input { flex: 1 1 220px; width: auto; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .tab { font: inherit; font-size: 14px; font-weight: 500; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid rgba(122,31,53,.35); background: transparent; color: var(--wine); cursor: pointer; }
+  .tab[aria-pressed="true"] { border-color: var(--wine); background: var(--wine); color: var(--cream); }
+
+  ul.guests { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .guest { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; border: 1.5px solid rgba(122, 31, 53, 0.2); background: #fff; flex-wrap: wrap; }
+  .guest__mark { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: 'Yellowtail', cursive; font-size: 24px; background: var(--wine); color: var(--cream); }
+  .guest--no .guest__mark { background: transparent; color: var(--muted); border: 2px dashed var(--muted); }
+  .guest__info { flex: 1 1 180px; min-width: 0; }
+  .guest__name { margin: 0; font-weight: 600; font-size: 17px; overflow-wrap: anywhere; }
+  .guest__meta { margin: 2px 0 0; font-size: 14px; color: var(--muted); }
+  .guest__actions { display: flex; gap: 6px; }
+  .guest .edit-name { flex: 1 1 200px; width: auto; }
+  .guest .edit-status { width: 150px; }
+  .icon-btn { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+  .icon-btn:hover { background: var(--cream); color: var(--wine); }
+  .empty { text-align: center; color: var(--muted); padding: 24px 0 8px; margin: 0; }
+
+  .credit { position: fixed; right: 16px; bottom: 16px; z-index: 5; padding: 8px 14px; border-radius: 999px; background: var(--paper); border: 1.5px solid rgba(122, 31, 53, 0.3); color: var(--wine); font-size: 12px; letter-spacing: 0.04em; text-decoration: none; box-shadow: 3px 3px 0 var(--rose-soft); }
+  .credit strong { font-weight: 600; }
+  .credit:hover { border-color: var(--wine); color: var(--wine-dark); }
+
+  @media (max-width: 560px) {
+    main { padding-top: 56px; padding-bottom: 120px; }
+    .credit { right: 50%; transform: translateX(50%); bottom: 12px; white-space: nowrap; }
+    .arc { width: 180px; height: 180px; }
+    .card { padding: 28px 20px; box-shadow: 5px 5px 0 var(--rose-soft); }
+    .answer, .add { grid-template-columns: 1fr; }
+    .countdown { gap: 8px; }
+    .countdown div { min-width: 64px; }
+    .guest .edit-status { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<svg class="arc arc--tr" viewBox="0 0 340 340" fill="none" stroke-width="40" aria-hidden="true">
+  <circle cx="340" cy="0" r="242" stroke="#D9A77A"/>
+  <circle cx="340" cy="0" r="196" stroke="#C4566B"/>
+  <circle cx="340" cy="0" r="150" stroke="#7A1F35"/>
+</svg>
+<svg class="arc arc--bl" viewBox="0 0 340 340" fill="none" stroke-width="40" aria-hidden="true">
+  <circle cx="0" cy="340" r="242" stroke="#D9A77A"/>
+  <circle cx="0" cy="340" r="196" stroke="#C4566B"/>
+  <circle cx="0" cy="340" r="150" stroke="#7A1F35"/>
+</svg>
+
+<!-- Página do convidado -->
+<main id="guest-view">
+  <header class="hero">
+    <p class="eyebrow">Você está convidado</p>
+    <p class="title-small">Aniversário da</p>
+    <h1 class="name">Mari</h1>
+    <div class="badge" aria-label="24 anos"><div><strong>24</strong><span>anos</span></div></div>
+    <hr class="rule">
+    <p class="script">Save the date</p>
+    <p class="date">7 de novembro · 19h30</p>
+    <hr class="rule">
+    <p class="venue">Benza Deus Gastrobar</p>
+    <p class="address">R. Joaquim de Figueiredo, 1217 - Barreiro, Belo Horizonte - MG, 30640-090</p>
+    <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Benza+Deus+Gastrobar+R.+Joaquim+de+Figueiredo+1217+Barreiro+Belo+Horizonte" target="_blank" rel="noopener">Ver no mapa</a>
+    <div class="countdown" aria-label="Contagem regressiva para a festa">
+      <div><b id="cd-d">00</b><small>dias</small></div>
+      <div><b id="cd-h">00</b><small>horas</small></div>
+      <div><b id="cd-m">00</b><small>min</small></div>
+    </div>
+  </header>
+
+  <section class="card" aria-labelledby="rsvp-title">
+    <h2 id="rsvp-title">Confirme sua presença</h2>
+    <p class="sub">Escreva seu nome completo e responda se vai.</p>
+
+    <form id="rsvp" novalidate>
+      <div class="field">
+        <label class="lbl" for="name">Nome completo</label>
+        <input id="name" name="name" type="text" autocomplete="name" placeholder="Nome e sobrenome" maxlength="80" required>
+      </div>
+      <p class="error" id="error" role="alert"></p>
+      <div class="answer">
+        <button class="btn" type="submit" value="yes">Vou!</button>
+        <button class="btn btn--ghost" type="submit" value="no">Não vou</button>
+      </div>
+      <p class="toast" id="toast" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>Te espero lá!</p>
+    <button class="btn btn--ghost btn--sm" type="button" id="open-admin">Lista de convidados</button>
+  </footer>
+</main>
+
+<!-- Senha do moderador -->
+<dialog id="login" aria-labelledby="login-title">
+  <form id="login-form" novalidate>
+    <h2 id="login-title">Área restrita</h2>
+    <p class="sub">Digite a senha do moderador.</p>
+    <div class="field">
+      <label class="lbl" for="password">Senha</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+    </div>
+    <p class="error" id="login-error" role="alert"></p>
+    <div class="dialog-actions">
+      <button class="btn btn--ghost" type="button" id="cancel-login">Cancelar</button>
+      <button class="btn" type="submit">Entrar</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Painel do moderador -->
+<main id="admin-view" hidden>
+  <section class="card" style="margin-top: 0" aria-labelledby="admin-title">
+    <div class="admin-head">
+      <h1 id="admin-title">Convidados</h1>
+      <div class="actions">
+        <button class="btn btn--ghost btn--sm" type="button" id="export">Baixar lista</button>
+        <button class="btn btn--sm" type="button" id="logout">Sair</button>
+      </div>
+    </div>
+    <p class="sub" style="text-align: left; margin: 8px 0 24px">Só você vê esta tela.</p>
+
+    <div class="stats">
+      <div class="stat"><b id="st-yes">0</b><small>Vão</small></div>
+      <div class="stat"><b id="st-no">0</b><small>Não vão</small></div>
+      <div class="stat"><b id="st-total">0</b><small>Respostas</small></div>
+    </div>
+
+    <form class="add" id="add-form" novalidate>
+      <label class="sr-only" for="add-name">Nome do convidado</label>
+      <input id="add-name" type="text" placeholder="Adicionar convidado" maxlength="80">
+      <label class="sr-only" for="add-status">Situação</label>
+      <select id="add-status">
+        <option value="yes">Vai</option>
+        <option value="no">Não vai</option>
+      </select>
+      <button class="btn btn--sm" type="submit">Adicionar</button>
+    </form>
+    <p class="error" id="add-error" role="alert" style="margin: -10px 0 14px"></p>
+
+    <div class="tools">
+      <label class="sr-only" for="search">Buscar convidado</label>
+      <input id="search" type="text" placeholder="Buscar pelo nome">
+    </div>
+    <div class="tabs" role="group" aria-label="Filtrar lista">
+      <button class="tab" type="button" data-filter="all" aria-pressed="true">Todos</button>
+      <button class="tab" type="button" data-filter="yes" aria-pressed="false">Vão</button>
+      <button class="tab" type="button" data-filter="no" aria-pressed="false">Não vão</button>
+    </div>
+
+    <ul class="guests" id="guests"></ul>
+    <p class="empty" id="empty">Ninguém respondeu ainda.</p>
+  </section>
+</main>
+
+<a class="credit" href="https://www.instagram.com/embercodesoftware/" target="_blank" rel="noopener">Powered by <strong>Ember Code</strong> · @embercodesoftware</a>
+
+<script>
+  const SESSION_KEY = 'mari-24-admin';
+  const PARTY = new Date('2026-11-07T19:30:00-03:00');
+
+  const $ = (id) => document.getElementById(id);
+  let guests = [];
+  let filter = 'all';
+  let editingKey = null;
+  let password = '';
+  try { password = sessionStorage.getItem(SESSION_KEY) || ''; } catch {}
+
+  const cleanName = (s) => s.trim().replace(/\s+/g, ' ');
+  const isFullName = (s) => s.split(' ').filter((p) => p.length >= 2).length >= 2;
+
+  async function api(path, { method = 'GET', body, auth = false } = {}) {
+    const headers = {};
+    if (body) headers['Content-Type'] = 'application/json';
+    if (auth) headers.Authorization = `Bearer ${password}`;
+    let res;
+    try {
+      res = await fetch(path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    } catch {
+      throw Object.assign(new Error('Sem conexão. Verifique a internet e tente de novo.'), { status: 0 });
+    }
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw Object.assign(new Error(data.error || 'Algo deu errado. Tente de novo.'), { status: res.status });
+    return data;
+  }
+
+  // Contagem regressiva
+  function tick() {
+    const diff = Math.max(0, PARTY - Date.now());
+    const pad = (n) => String(n).padStart(2, '0');
+    $('cd-d').textContent = pad(Math.floor(diff / 86400000));
+    $('cd-h').textContent = pad(Math.floor(diff / 3600000) % 24);
+    $('cd-m').textContent = pad(Math.floor(diff / 60000) % 60);
+  }
+  tick();
+  setInterval(tick, 30000);
+
+  // Confirmação do convidado
+  $('rsvp').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = cleanName($('name').value);
+    const going = e.submitter ? e.submitter.value === 'yes' : true;
+
+    if (!isFullName(name)) {
+      $('error').textContent = 'Escreva seu nome completo (nome e sobrenome).';
+      $('name').focus();
+      return;
+    }
+
+    const buttons = $('rsvp').querySelectorAll('button');
+    buttons.forEach((b) => (b.disabled = true));
+    $('error').textContent = '';
+    try {
+      const { updated } = await api('/api/rsvp', { method: 'POST', body: { name, going } });
+      $('toast').textContent = updated
+        ? 'Resposta atualizada!'
+        : going ? 'Oba, te esperamos!' : 'Que pena! Vamos sentir sua falta.';
+      $('rsvp').reset();
+      setTimeout(() => { $('toast').textContent = ''; }, 4000);
+    } catch (err) {
+      $('error').textContent = err.message;
+    } finally {
+      buttons.forEach((b) => (b.disabled = false));
+    }
+  });
+
+  // Login do moderador
+  $('open-admin').addEventListener('click', async () => {
+    if (password) {
+      try { guests = (await api('/api/guests', { auth: true })).guests; return showAdmin(); }
+      catch { password = ''; }
+    }
+    $('login-error').textContent = '';
+    $('login-form').reset();
+    $('login').showModal();
+  });
+  $('cancel-login').addEventListener('click', () => $('login').close());
+
+  $('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    password = $('password').value;
+    try {
+      guests = (await api('/api/guests', { auth: true })).guests;
+    } catch (err) {
+      password = '';
+      $('login-error').textContent = err.message;
+      $('password').select();
+      return;
+    }
+    try { sessionStorage.setItem(SESSION_KEY, password); } catch {}
+    $('login').close();
+    showAdmin();
+  });
+
+  function showAdmin() {
+    $('guest-view').hidden = true;
+    $('admin-view').hidden = false;
+    window.scrollTo(0, 0);
+    render();
+  }
+
+  $('logout').addEventListener('click', () => {
+    password = '';
+    try { sessionStorage.removeItem(SESSION_KEY); } catch {}
+    editingKey = null;
+    guests = [];
+    $('admin-view').hidden = true;
+    $('guest-view').hidden = false;
+  });
+
+  // Toda alteração do painel devolve a lista atualizada do servidor
+  async function adminCall(path, opts) {
+    try {
+      guests = (await api(path, { ...opts, auth: true })).guests;
+      $('add-error').textContent = '';
+      return true;
+    } catch (err) {
+      if (err.status === 401) { $('logout').click(); alert('Sua sessão expirou. Entre de novo.'); }
+      else $('add-error').textContent = err.message;
+      return false;
+    } finally {
+      render();
+    }
+  }
+
+  $('add-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = cleanName($('add-name').value);
+    if (name.length < 2) {
+      $('add-error').textContent = 'Escreva o nome do convidado.';
+      $('add-name').focus();
+      return;
+    }
+    if (await adminCall('/api/guests', { method: 'POST', body: { name, going: $('add-status').value === 'yes' } })) {
+      $('add-name').value = '';
+    }
+  });
+
+  $('search').addEventListener('input', render);
+  document.querySelectorAll('.tab').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      filter = btn.dataset.filter;
+      document.querySelectorAll('.tab').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      render();
+    })
+  );
+
+  function render() {
+    const yes = guests.filter((g) => g.going).length;
+    $('st-yes').textContent = yes;
+    $('st-no').textContent = guests.length - yes;
+    $('st-total').textContent = guests.length;
+
+    const q = $('search').value.trim().toLowerCase();
+    const shown = guests
+      .filter((g) => (filter === 'all' || (filter === 'yes') === g.going) && g.name.toLowerCase().includes(q))
+      .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+
+    $('guests').replaceChildren(...shown.map((g) => (g.key === editingKey ? editItem(g) : guestItem(g))));
+    $('empty').hidden = shown.length > 0;
+    $('empty').textContent = guests.length ? 'Ninguém encontrado.' : 'Ninguém respondeu ainda.';
+  }
+
+  const ICON_EDIT = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></svg>';
+  const ICON_REMOVE = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function iconButton(svg, label, onClick) {
+    const b = el('button', 'icon-btn');
+    b.type = 'button';
+    b.innerHTML = svg;
+    b.setAttribute('aria-label', label);
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function guestItem(g) {
+    const li = el('li', 'guest' + (g.going ? '' : ' guest--no'));
+    const mark = el('span', 'guest__mark', g.name.charAt(0).toUpperCase());
+    mark.setAttribute('aria-hidden', 'true');
+
+    const info = el('div', 'guest__info');
+    info.append(
+      el('p', 'guest__name', g.name),
+      el('p', 'guest__meta', (g.going ? 'Vai' : 'Não vai') + ' · ' + new Date(g.at).toLocaleDateString('pt-BR'))
+    );
+
+    const actions = el('div', 'guest__actions');
+    actions.append(
+      iconButton(ICON_EDIT, `Editar ${g.name}`, () => { editingKey = g.key; render(); }),
+      iconButton(ICON_REMOVE, `Remover ${g.name}`, () => {
+        if (!confirm(`Remover ${g.name} da lista?`)) return;
+        adminCall(`/api/guests?key=${encodeURIComponent(g.key)}`, { method: 'DELETE' });
+      })
+    );
+
+    li.append(mark, info, actions);
+    return li;
+  }
+
+  function editItem(g) {
+    const li = el('li', 'guest');
+    const name = el('input', 'edit-name');
+    name.type = 'text';
+    name.value = g.name;
+    name.maxLength = 80;
+    name.setAttribute('aria-label', 'Nome');
+
+    const status = el('select', 'edit-status');
+    status.setAttribute('aria-label', 'Situação');
+    status.innerHTML = '<option value="yes">Vai</option><option value="no">Não vai</option>';
+    status.value = g.going ? 'yes' : 'no';
+
+    const saveBtn = el('button', 'btn btn--sm', 'Salvar');
+    saveBtn.type = 'button';
+    saveBtn.addEventListener('click', async () => {
+      const n = cleanName(name.value);
+      if (n.length < 2) { name.focus(); return; }
+      saveBtn.disabled = true;
+      if (await adminCall('/api/guests', { method: 'PUT', body: { key: g.key, name: n, going: status.value === 'yes' } })) {
+        editingKey = null;
+        render();
+      }
+    });
+
+    const cancel = el('button', 'btn btn--ghost btn--sm', 'Cancelar');
+    cancel.type = 'button';
+    cancel.addEventListener('click', () => { editingKey = null; render(); });
+
+    name.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') saveBtn.click();
+      if (e.key === 'Escape') cancel.click();
+    });
+
+    const actions = el('div', 'guest__actions');
+    actions.append(cancel, saveBtn);
+    li.append(name, status, actions);
+    setTimeout(() => name.focus());
+    return li;
+  }
+
+  // Exportar CSV
+  $('export').addEventListener('click', () => {
+    const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+    const rows = [['Nome', 'Vai', 'Respondido em']]
+      .concat(guests.map((g) => [g.name, g.going ? 'Sim' : 'Não', new Date(g.at).toLocaleString('pt-BR')]));
+    const csv = '﻿' + rows.map((r) => r.map(esc).join(';')).join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'lista-de-convidados-mari.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+</script>
+</body>
+</html>

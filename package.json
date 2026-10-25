@@ -1,0 +1,9 @@
+{
+  "name": "aniversario-mari",
+  "private": true,
+  "type": "module",
+  "description": "Convite e lista de presença do aniversário de 24 anos da Mari",
+  "engines": {
+    "node": ">=20"
+  }
+}
