@@ -1,6 +1,6 @@
-import { cleanName, isFullName, saveGuest } from '../lib/store.js';
+import { cleanName, saveGuest } from '../lib/store.js';
 
-// Confirmação pública: o convidado manda nome completo e se vai ou não.
+// Confirmação pública: o convidado manda o nome e se vai ou não.
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -8,8 +8,8 @@ export default async function handler(req, res) {
   }
 
   const name = cleanName(req.body?.name);
-  if (!isFullName(name)) {
-    return res.status(400).json({ error: 'Escreva seu nome completo (nome e sobrenome).' });
+  if (!name) {
+    return res.status(400).json({ error: 'Escreva seu nome.' });
   }
 
   try {

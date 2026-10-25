@@ -191,12 +191,12 @@
 
   <section class="card" aria-labelledby="rsvp-title">
     <h2 id="rsvp-title">Confirme sua presença</h2>
-    <p class="sub">Escreva seu nome completo e responda se vai.</p>
+    <p class="sub">Escreva seu nome e responda se vai.</p>
 
     <form id="rsvp" novalidate>
       <div class="field">
-        <label class="lbl" for="name">Nome completo</label>
-        <input id="name" name="name" type="text" autocomplete="name" placeholder="Nome e sobrenome" maxlength="80" required>
+        <label class="lbl" for="name">Seu nome</label>
+        <input id="name" name="name" type="text" autocomplete="name" placeholder="Seu nome" maxlength="80" required>
       </div>
       <p class="error" id="error" role="alert"></p>
       <div class="answer">
@@ -289,7 +289,6 @@
   try { password = sessionStorage.getItem(SESSION_KEY) || ''; } catch {}
 
   const cleanName = (s) => s.trim().replace(/\s+/g, ' ');
-  const isFullName = (s) => s.split(' ').filter((p) => p.length >= 2).length >= 2;
 
   async function api(path, { method = 'GET', body, auth = false } = {}) {
     const headers = {};
@@ -323,8 +322,8 @@
     const name = cleanName($('name').value);
     const going = e.submitter ? e.submitter.value === 'yes' : true;
 
-    if (!isFullName(name)) {
-      $('error').textContent = 'Escreva seu nome completo (nome e sobrenome).';
+    if (!name) {
+      $('error').textContent = 'Escreva seu nome.';
       $('name').focus();
       return;
     }
