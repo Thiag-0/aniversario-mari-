@@ -4,3 +4,8 @@ dist/
 .vercel/
 *.log
 .env*
+
+.vercel
+.agents/
+.claude/
+skills-lock.json
